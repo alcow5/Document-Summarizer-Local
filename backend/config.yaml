@@ -1,0 +1,86 @@
+# Application Configuration
+app:
+  name: "Privacy-Focused AI Document Summarizer"
+  version: "1.0.0"
+  description: "Local document summarization with AI"
+  host: "127.0.0.1"
+  port: 8050
+  debug: false
+  
+# Database Configuration
+database:
+  type: "sqlite"
+  path: "database/summaries.db"
+  encryption_key_env: "DB_ENCRYPTION_KEY"
+  max_summaries: 50
+  backup_enabled: true
+  backup_interval_hours: 24
+
+# LLM Model Configuration
+model:
+  name: "llama3:8b"
+  host: "http://localhost:11434"
+  context_window: 8192
+  overlap_tokens: 512
+  max_tokens: 4096
+  temperature: 0.7
+  quantization: "8bit"
+  update_check_interval_hours: 168  # Weekly
+
+# Document Processing
+documents:
+  supported_formats: ["pdf", "docx"]
+  max_file_size_mb: 50
+  max_pages: 100
+  chunk_size: 4096
+  overlap_size: 512
+  
+# Summary Templates
+templates:
+  general:
+    name: "General Summary"
+    prompt: "Summarize the following document in 200 words or less, highlighting the key points and main themes:\n\n{text}"
+    
+  customer_feedback:
+    name: "Customer Feedback Analysis"
+    prompt: "Analyze the following customer feedback document. Provide a 200-word summary including: 1) Overall sentiment, 2) Top 3 themes or issues, 3) Actionable insights:\n\n{text}"
+    
+  contract_analysis:
+    name: "Contract Analysis"
+    prompt: "Analyze the following contract document. Provide a 200-word summary including: 1) Key terms and obligations, 2) Important dates and deadlines, 3) Potential risks or concerns:\n\n{text}"
+
+# Security Settings
+security:
+  cors_origins: ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3050", "app://./"]
+  session_timeout_minutes: 60
+  max_failed_attempts: 5
+  lockout_duration_minutes: 15
+  
+# API Settings
+api:
+  rate_limit_requests: 100
+  rate_limit_window_minutes: 15
+  request_timeout_seconds: 300
+  max_concurrent_requests: 5
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}"
+  rotation: "1 week"
+  retention: "1 month"
+  file: "logs/app.log"
+
+# Model Update Configuration
+updates:
+  check_url: "https://api.github.com/repos/your-repo/releases/latest"
+  models_directory: "models/"
+  auto_check: true
+  backup_old_models: true
+
+# Performance Settings
+performance:
+  max_workers: 4
+  memory_limit_gb: 8
+  processing_timeout_seconds: 300
+  chunk_processing_delay_ms: 100 
