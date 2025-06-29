@@ -408,11 +408,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Issues: [GitHub Issues](https://github.com/your-username/DocumentSummarizer/issues)
 - Email: support@documentsummarizer.com
 
-## 🎯 Business Model
-
-- **One-Time Purchase**: $99 for desktop app
-- **Subscription**: $10/month for premium templates and updates
-- **Custom Consulting**: $500-$1,000 for custom template development
 
 ---
 
